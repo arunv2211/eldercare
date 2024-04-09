@@ -10,4 +10,8 @@
     <color name="blue">#1F51FF</color>
     <color name="bluegrey">#7393B3</color>
     <color name="lightblue">#ADD8E6</color>
+    <color name="halfwhite">#E4E4E4</color>
+    <color name="light_bllue">#6C8DFE</color>
+    <color name="light_blue_theme">#EAEFFF</color>
+    <color name="secondary_blue">#4F76FF</color>
 </resources>

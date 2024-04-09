@@ -12,4 +12,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="home_box1">"Profile"</string>
+    <string name="home_box2">"History"</string>
+    <string name="home_box3">"Remainders"</string>
+    <string name="home_box4">"Settings"</string>
+    <string name="profile_name">"Name"</string>
+    <string name="profile_update">"Update"</string>
 </resources>
