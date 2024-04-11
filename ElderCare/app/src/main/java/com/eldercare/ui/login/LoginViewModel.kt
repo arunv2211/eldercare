@@ -8,6 +8,10 @@ import com.eldercare.data.LoginRepository
 import com.eldercare.data.Result
 
 import com.eldercare.R
+import com.pflegedigital.data.model.GeneralResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -19,14 +23,23 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+        loginRepository.login(username, password, object : Callback<GeneralResponse?> {
+            override fun onResponse(
+                call: Call<GeneralResponse?>,
+                response: Response<GeneralResponse?>
+            ) {
+                if(response.body()?.success == true) {
+                    _loginResult.value =
+                        LoginResult(success = LoggedInUserView(displayName = "Hello ${username}"))
+                } else {
+                    _loginResult.value = LoginResult(error = R.string.login_failed)
+                }
+            }
 
-        if (result is Result.Success) {
-            _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
+            override fun onFailure(call: Call<GeneralResponse?>, t: Throwable) {
+                _loginResult.value = LoginResult(error = R.string.login_failed)
+            }
+        })
     }
 
     fun loginDataChanged(username: String, password: String) {

@@ -2,27 +2,27 @@ package com.eldercare.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.eldercare.MainActivity
-import com.eldercare.databinding.ActivityLoginBinding
-
 import com.eldercare.R
 import com.eldercare.databinding.ActivityLogin1Binding
+import com.eldercare.network.APIInterface
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLogin1Binding
+    var apiInterface: APIInterface? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,12 +61,13 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+                startActivity(Intent(this, MainActivity::class.java))
+                //Complete and destroy login activity once successful
+                finish()
             }
             setResult(Activity.RESULT_OK)
 
-            startActivity(Intent(this, MainActivity::class.java))
-            //Complete and destroy login activity once successful
-            finish()
+
         })
 
         username.afterTextChanged {
