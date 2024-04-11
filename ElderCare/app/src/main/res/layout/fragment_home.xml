@@ -12,11 +12,14 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
       android:text="Welcome To Elder care"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
       android:paddingLeft="20dp"
       android:textStyle="bold"
       android:paddingTop="25sp"
        android:textColor="@color/blue"
-      android:textSize="20sp"></TextView>
+      android:textSize="20sp"/>
 
    <TextView
        app:layout_constraintTop_toBottomOf="@id/text_home_head"
@@ -27,7 +30,7 @@
        android:paddingLeft="20dp"
        android:textColor="@color/blue"
        android:textStyle="bold"
-       android:textSize="10sp"></TextView>
+       android:textSize="10sp"/>
 
 
 
