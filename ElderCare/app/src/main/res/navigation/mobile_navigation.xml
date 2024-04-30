@@ -14,12 +14,31 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.eldercare.ui.profile.ProfileFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_profile" />
+        android:label="@string/profile_name"
+        tools:layout="@layout/fragment_profile1" />
 
     <fragment
         android:id="@+id/navigation_remainder"
         android:name="com.eldercare.ui.remainders.RemainderFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_remainders" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.eldercare.ui.remainders.RemainderFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.eldercare.ui.settings.SettingsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_update_profile"
+        android:name="com.eldercare.ui.settings.SettingsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_profile" />
+
+
 </navigation>

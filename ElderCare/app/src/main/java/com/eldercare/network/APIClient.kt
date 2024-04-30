@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 class APIClient {
@@ -13,7 +14,8 @@ class APIClient {
     fun getClient(): Retrofit? {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val client: OkHttpClient = OkHttpClient.Builder().connectTimeout(120,TimeUnit.SECONDS)
+            .addInterceptor(interceptor).build()
 
         retrofit = Retrofit.Builder()
             .baseUrl("http://127.0.0.1:8080")

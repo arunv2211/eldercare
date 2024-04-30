@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/light_blue_theme">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Treatment History"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/blue"
+            android:paddingLeft="30dp"
+            android:paddingTop="40dp"
+            android:id="@+id/remainder_id" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/remainder_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/fragment_history_adapter_view"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

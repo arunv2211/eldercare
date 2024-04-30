@@ -1,5 +1,4 @@
 package com.eldercare.ui.login
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -12,29 +11,24 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.eldercare.MainActivity
 import com.eldercare.R
 import com.eldercare.databinding.ActivityLogin1Binding
 import com.eldercare.network.APIInterface
-
-
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLogin1Binding
     var apiInterface: APIInterface? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityLogin1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val username = binding.userName
         val password = binding.password
+        val forgot_password_id = binding.forgetPasswordId
         val login = binding.loginId
 //        val loading = binding.loading
-
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
 
@@ -100,6 +94,11 @@ class LoginActivity : AppCompatActivity() {
 //                loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+
+            binding.forgetPasswordId.setOnClickListener {
+                findNavController().navigate(R.id.navigation_update_profile)
+            }
+
         }
     }
 
